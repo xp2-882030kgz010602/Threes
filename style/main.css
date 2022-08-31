@@ -197,7 +197,7 @@ hr {
     .game-container .game-message.game-won, .game-container .game-message.game-over {
       display: block; }
 .nextgame-container {
-  margin-top: -24px;
+  margin-top: -12px;
   margin-left:50px;
   position: relative;
   padding: 16px;

@@ -199,6 +199,7 @@ GameManager.prototype.move = function (direction) {
   if (moved) {
     //console.log(cells);
     //alert(spawnlocations);
+    this.storageManager.setGameState(this.serialize());
     this.addRandomTile(spawnlocations);
     this.updatescore();
 

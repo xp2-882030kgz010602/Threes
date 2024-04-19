@@ -392,6 +392,20 @@ hr {
     background:rgba(0,0,0,0);
     background-image: url("../tiles/1536-alt.png");
     background-size: 100% auto;}
+  .tile.tile-1536-alt1 .tile-inner {
+    width:200%;
+    height:200%;
+    transform:translate(-25%,-25%);
+    background:rgba(0,0,0,0);
+    background-image: url("../tiles/1536-alt1.png");
+    background-size: 100% auto;}
+  .tile.tile-1536-alt2 .tile-inner {
+    width:200%;
+    height:200%;
+    transform:translate(-25%,-25%);
+    background:rgba(0,0,0,0);
+    background-image: url("../tiles/1536-alt2.png");
+    background-size: 100% auto;}
   .tile.tile-3072 .tile-inner {
     width:200%;
     height:200%;

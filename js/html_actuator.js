@@ -107,13 +107,13 @@ HTMLActuator.prototype.chooserandomint=function(n){
 HTMLActuator.prototype.value2class=function(value){
   var class_="tile-"+value;
   if(value>=192&&Math.random()<0.1){
-    value+="-alt";
+    class_+="-alt";
     if(value===192||value===384||value===6144){
-      value+=this.chooserandomint(1);
+      class_+=this.chooserandomint(1);
     }else if(value===768||value===1536){
-      value+=this.chooserandomint(3);
+      class_+=this.chooserandomint(3);
     }else if(value===3072){
-      value+=this.chooserandomint(2);
+      class_+=this.chooserandomint(2);
     }
   }
   return class_;

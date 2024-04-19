@@ -329,12 +329,12 @@ hr {
     background:rgba(0,0,0,0);
     background-image: url("../tiles/192.png");
     background-size: 100% auto;}
-  .tile.tile-192-alt .tile-inner {
+  .tile.tile-192-alt0 .tile-inner {
     width:200%;
     height:200%;
     transform:translate(-25%,-25%);
     background:rgba(0,0,0,0);
-    background-image: url("../tiles/192-alt.png");
+    background-image: url("../tiles/192-alt0.png");
     background-size: 100% auto;}
   .tile.tile-384 .tile-inner {
     width:200%;
@@ -343,12 +343,12 @@ hr {
     background:rgba(0,0,0,0);
     background-image: url("../tiles/384.png");
     background-size: 100% auto;}
-  .tile.tile-384-alt .tile-inner {
+  .tile.tile-384-alt0 .tile-inner {
     width:200%;
     height:200%;
     transform:translate(-25%,-25%);
     background:rgba(0,0,0,0);
-    background-image: url("../tiles/384-alt.png");
+    background-image: url("../tiles/384-alt0.png");
     background-size: 100% auto;}
   .tile.tile-768 .tile-inner {
     width:200%;
@@ -357,12 +357,12 @@ hr {
     background:rgba(0,0,0,0);
     background-image: url("../tiles/768.png");
     background-size: 100% auto;}
-  .tile.tile-768-alt .tile-inner {
+  .tile.tile-768-alt0 .tile-inner {
     width:200%;
     height:200%;
     transform:translate(-25%,-25%);
     background:rgba(0,0,0,0);
-    background-image: url("../tiles/768-alt.png");
+    background-image: url("../tiles/768-alt0.png");
     background-size: 100% auto;}
   .tile.tile-768-alt1 .tile-inner {
     width:200%;
@@ -385,12 +385,12 @@ hr {
     background:rgba(0,0,0,0);
     background-image: url("../tiles/1536.png");
     background-size: 100% auto;}
-  .tile.tile-1536-alt .tile-inner {
+  .tile.tile-1536-alt0 .tile-inner {
     width:200%;
     height:200%;
     transform:translate(-25%,-25%);
     background:rgba(0,0,0,0);
-    background-image: url("../tiles/1536-alt.png");
+    background-image: url("../tiles/1536-alt0.png");
     background-size: 100% auto;}
   .tile.tile-1536-alt1 .tile-inner {
     width:200%;
@@ -413,12 +413,12 @@ hr {
     background:rgba(0,0,0,0);
     background-image: url("../tiles/3072.png");
     background-size: 100% auto;}
-  .tile.tile-3072-alt .tile-inner {
+  .tile.tile-3072-alt0 .tile-inner {
     width:200%;
     height:200%;
     transform:translate(-25%,-25%);
     background:rgba(0,0,0,0);
-    background-image: url("../tiles/3072-alt.png");
+    background-image: url("../tiles/3072-alt0.png");
     background-size: 100% auto;}
   .tile.tile-3072-alt1 .tile-inner {
     width:200%;
@@ -434,12 +434,12 @@ hr {
     background:rgba(0,0,0,0);
     background-image: url("../tiles/6144.png");
     background-size: 100% auto;}
-  .tile.tile-6144-alt .tile-inner {
+  .tile.tile-6144-alt0 .tile-inner {
     width:200%;
     height:200%;
     transform:translate(-25%,-25%);
     background:rgba(0,0,0,0);
-    background-image: url("../tiles/6144-alt.png");
+    background-image: url("../tiles/6144-alt0.png");
     background-size: 100% auto;}
   .tile.tile-super .tile-inner {
     color: #000000;

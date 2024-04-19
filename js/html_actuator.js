@@ -94,6 +94,31 @@ HTMLActuator.prototype.islarge=function(value){
   return false;
 };
 
+HTMLActuator.prototype.chooserandomint=function(n){
+  if(n===1){
+    return 0;
+  }else if(n===2){
+    return Math.round(Math.random());
+  }else{
+    return Math.floor(Math.random()*n);
+  }
+};
+
+HTMLActuator.prototype.value2class=function(value){
+  var class="tile-"+value;
+  if(value>=192&&Math.random()<0.1){
+    value+="-alt";
+    if(value===192||value===384||value===6144){
+      value+=this.chooserandomint(1);
+    }else if(value===768||value===1536){
+      value+=this.chooserandomint(3);
+    }else if(value===3072){
+      value+=this.chooserandomint(2);
+    }
+  }
+  return value;
+};
+
 HTMLActuator.prototype.addTile = function (tile,isnext) {
   var self = this;
 
@@ -104,7 +129,7 @@ HTMLActuator.prototype.addTile = function (tile,isnext) {
   var value=tile.value;
 
   // We can't use classlist because it somehow glitches when replacing classes
-  var classes = ["tile", "tile-" + value, positionClass];
+  var classes = ["tile", this.value2class(value), positionClass];
 
   if (value > 6144) classes.push("tile-super");
 

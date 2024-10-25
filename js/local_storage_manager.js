@@ -19,11 +19,14 @@ window.fakeStorage = {
 };
 
 function LocalStorageManager() {
-  this.bestScoreKey     = "bestScore-b5fc8f76-a9b4-40dc-8928-066760af3c14";
-  this.gameStateKey     = "gameState-b5fc8f76-a9b4-40dc-8928-066760af3c14";
-  this.nextkey="next-b5fc8f76-a9b4-40dc-8928-066760af3c14";
-  this.deckkey="deck-b5fc8f76-a9b4-40dc-8928-066760af3c14";
-  this.giantkey="giant-b5fc8f76-a9b4-40dc-8928-066760af3c14";
+  var uuid="-b5fc8f76-a9b4-40dc-8928-066760af3c14";
+  this.bestScoreKey     = "bestScore"+uuid;
+  this.gameStateKey     = "gameState"+uuid;
+  this.nextkey="next"+uuid;
+  this.deckkey="deck"+uuid;
+  this.giantkey="giant"+uuid;
+  this.boostkey="boost"+uuid;
+  this.boostcellkey="boostcell"+uuid;
 
   var supported = this.localStorageSupported();
   this.storage = supported ? window.localStorage : window.fakeStorage;
@@ -78,6 +81,22 @@ LocalStorageManager.prototype.clearnext=function(){
   this.storage.removeItem(this.nextkey);
 };
 
+LocalStorageManager.prototype.setboost=function(boost){
+  this.storage.setItem(this.boostkey,boost);
+};
+
+LocalStorageManager.prototype.getboost=function(){
+  return 1*this.storage.getItem(this.boostkey)||0;
+};
+
+LocalStorageManager.prototype.setboostcell=function(cell){
+  this.storage.setItem(this.boostcellkey,JSON.stringify(cell));
+};
+
+LocalStorageManager.prototype.getboostcell=function(){
+  return JSON.parse(this.storage.getItem(this.boostcellkey))||{x:0,y:0};
+};
+
 LocalStorageManager.prototype.setdeck=function(deck){
   this.storage.setItem(this.deckkey,JSON.stringify(deck));
 };
@@ -117,12 +136,14 @@ LocalStorageManager.prototype.getgiant=function(){
   return JSON.parse(this.storage.getItem(this.giantkey));
 };
 
-LocalStorageManager.prototype.resetgiant=function(){
+LocalStorageManager.prototype.resetgiant=function(skipfirstgiant){
   var giant=[];
   for(var i=0;i<21;i++){
     giant.push(0);
   }
-  giant[Math.floor(Math.random()*21)]=1;
+  if(!skipfirstgiant){
+    giant[Math.floor(Math.random()*21)]=1;
+  }
   this.setgiant(giant);
 };
 

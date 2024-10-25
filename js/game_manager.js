@@ -46,11 +46,12 @@ GameManager.prototype.setup = function () {
     //Set up decks
     this.storageManager.resetdeck();
     this.storageManager.drawdeck();
-    this.storageManager.resetgiant();
+    var boost=this.storageManager.getboost();
+    this.storageManager.resetgiant(boost);
     
 
     // Add the initial tiles
-    this.addStartTiles();
+    this.addStartTiles(boost);
     //Update score
     this.updatescore();
   }
@@ -60,8 +61,11 @@ GameManager.prototype.setup = function () {
 };
 
 // Set up the initial tiles to start the game with
-GameManager.prototype.addStartTiles = function () {
-  for (var i = 0; i < this.startTiles; i++) {
+GameManager.prototype.addStartTiles = function (boost) {//If [boost] is not 0, then spawns a boost
+  if(boost){
+    this.grid.insertTile(new Tile(this.storageManager.getboostcell(),boost,this.chooseglitch(boost)));
+  }
+  for (var i = 0; i < this.startTiles-(boost!==0); i++) {
     this.addRandomTile([this.grid.randomAvailableCell()],true);
   }
 };

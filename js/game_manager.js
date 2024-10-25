@@ -66,6 +66,29 @@ GameManager.prototype.addStartTiles = function () {
   }
 };
 
+GameManager.prototype.chooserandomint=function(n){
+  if(n===1){
+    return 0;
+  }else if(n===2){
+    return Math.round(Math.random());
+  }else{
+    return Math.floor(Math.random()*n);
+  }
+};
+
+GameManager.prototype.chooseglitch=function(value){
+  if(value>=192&&Math.random()<0.1){
+    if(value===192||value===384||value===6144){
+      return this.chooserandomint(1);
+    }else if(value===768||value===1536){
+      return this.chooserandomint(3);
+    }else if(value===3072){
+      return this.chooserandomint(2);
+    }
+  }
+  return -1;
+};
+
 // Adds a tile in a random position
 GameManager.prototype.addRandomTile = function (spawnlocations,nogiant) {
   var pool=[];//Dedupe our list
@@ -83,7 +106,7 @@ GameManager.prototype.addRandomTile = function (spawnlocations,nogiant) {
   if (this.grid.cellsAvailable()) {
     var value = this.storageManager.getnext();
     value=value[Math.floor(Math.random()*value.length)];
-    var tile = new Tile(cell,value);
+    var tile = new Tile(cell,value,this.chooseglitch(value));
     this.grid.insertTile(tile);
     this.storageManager.draw(nogiant);
   }
@@ -176,7 +199,8 @@ GameManager.prototype.move = function (direction) {
 
         // Only one merger per row traversal?
         if (next && self.mergable(next.value,tile.value) && !next.mergedFrom) {
-          var merged = new Tile(positions.next, tile.value+next.value);
+          var mergedvalue=tile.value+next.value;
+          var merged = new Tile(positions.next, mergedvalue,self.chooseglitch(mergedvalue));
           merged.mergedFrom = [tile, next];
 
           self.grid.insertTile(merged);

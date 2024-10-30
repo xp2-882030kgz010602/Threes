@@ -14,6 +14,14 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
 
 // Restart the game
 GameManager.prototype.restart = function () {
+  var boost=1*prompt("Starting boost (0 for no boost):",this.storageManager.getboost())
+  this.storageManager.setboost(boost);
+  if(boost){
+    var currentboostcorner=this.storageManager.getboostcell();
+    var y=1*prompt("Boost row:",currentboostcorner.y);//I don't know why the board is set up like this
+    var x=1*prompt("Boost column:",currentboostcorner.x);
+    this.storageManager.setboostcell({x:x,y:y});
+  }
   this.storageManager.clearGameState();
   this.actuator.continueGame(); // Clear the game won/lost message
   this.setup();
@@ -33,6 +41,8 @@ GameManager.prototype.isGameTerminated = function () {
 GameManager.prototype.setup = function () {
   var previousState = this.storageManager.getGameState();
 
+  var boost=this.storageManager.getboost();
+  this.displayboost(boost);
   // Reload the game from a previous game if present
   if (previousState) {
     this.grid        = new Grid(previousState.grid.size,
@@ -46,7 +56,6 @@ GameManager.prototype.setup = function () {
     //Set up decks
     this.storageManager.resetdeck();
     this.storageManager.drawdeck();
-    var boost=this.storageManager.getboost();
     this.storageManager.resetgiant(boost);
     
 
@@ -58,6 +67,10 @@ GameManager.prototype.setup = function () {
 
   // Update the actuator
   this.actuate();
+};
+//Setup boost text
+GameManager.prototype.displayboost=function(boost){
+  document.getElementById("starting-boost-container").innerHTML="Boost value: "+boost;
 };
 
 // Set up the initial tiles to start the game with
